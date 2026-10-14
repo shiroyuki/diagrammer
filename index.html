@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagrammer</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='4' width='12' height='9' rx='2' fill='%232563eb'/%3E%3Crect x='17' y='19' width='12' height='9' rx='2' fill='%232563eb'/%3E%3Cpath d='M9 13v6h8' stroke='%232563eb' stroke-width='2' fill='none'/%3E%3C/svg%3E" />
+    <script>
+      // Resolve the theme before first paint to avoid a flash of the wrong theme.
+      (function () {
+        var dark = false;
+        try {
+          var m = localStorage.getItem('diagrammer.theme');
+          dark = m === 'dark' || ((m == null || m === 'system') && matchMedia('(prefers-color-scheme: dark)').matches);
+        } catch (e) {}
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
